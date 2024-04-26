@@ -9,8 +9,9 @@ type TickerEntry struct {
 	Done   chan bool
 }
 
-func NewTicker(limit int, duration time.Duration) TickerEntry {
-	entry := TickerEntry{Limit: limit}
+func NewTicker(limit int, duration time.Duration) (entry TickerEntry) {
+	//entry := TickerEntry{Limit: limit}
+	entry.Limit = limit
 	entry.Ticker = time.NewTicker(duration)
 	entry.Done = make(chan bool)
 	entry.Incr = make(chan int, limit)
